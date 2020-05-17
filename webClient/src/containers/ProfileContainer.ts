@@ -1,14 +1,14 @@
-import { App as Component } from './App';
+import { Profile as Component } from '../components/Profile';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Dispatch } from 'react';
-import { IAction, SetAge, SetName } from './actions';
-import { IAppState } from './store';
+import { IAction, SetAge, SetName } from '../actions/ProfileActions';
+import { IStoreState } from '../store';
 
-const mapStateToProps = (state: IAppState) => {
+const mapStateToProps = (state: IStoreState) => {
   return {
-    age: state.app.age,
-    name: state.app.name,
+    age: state.profile.age,
+    name: state.profile.name,
   };
 };
 
@@ -16,13 +16,12 @@ const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
   return {
     onAgeButtonClick: () => dispatch(SetAge(Math.floor(Math.random() * 100))),
     changeName: (char: string) => {
-      console.log(char);
       dispatch(SetName(char));
     },
   };
 };
 
-export const App = compose(
+export const Profile = compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
