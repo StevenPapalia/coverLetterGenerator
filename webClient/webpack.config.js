@@ -12,11 +12,15 @@ module.exports = {
         test: /\.tsx?$/,
         use: "ts-loader",
         include: /src/,
-      }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
     ]
   },
   watch: true,
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js", ".css"],
   },
 }
