@@ -11,16 +11,11 @@ interface Props {
 }
 
 export const App: React.FC<Props> = ({ currentPage }) => {
+  const pages = [<Home />, <Search />, <AddMedia />, <Messages />, <Profile />];
   return (
     <div>
       <TopTabBar />
-      <div>{
-        currentPage === 0 ? <Home /> :
-        currentPage === 1 ? <Search /> :
-        currentPage === 2 ? <AddMedia /> :
-        currentPage === 3 ? <Messages /> :
-        <Profile />  
-      }</div>
+      <div>{pages[currentPage]}</div>
     </div>
   );
 }
