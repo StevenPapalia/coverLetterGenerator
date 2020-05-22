@@ -1,10 +1,7 @@
 import { ProfileEvents } from "../events/ProfileEvents"
 
 const makeAction = <T extends ProfileEvents, P>(type: T) => (payload: P) => {
-  return {
-    type,
-    payload,
-  }
+  return { type, payload }
 }
 
 export const SetName = makeAction<ProfileEvents.SET_NAME, string>(ProfileEvents.SET_NAME);

@@ -6,9 +6,7 @@ import { Search } from './Search';
 import { AddMedia } from './AddMedia';
 import { Messages } from './Messages';
 
-interface Props {
-  currentPage: number;
-}
+interface Props { currentPage: number; }
 
 export const App: React.FC<Props> = ({ currentPage }) => {
   const pages = [<Home />, <Search />, <AddMedia />, <Messages />, <Profile />];

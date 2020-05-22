@@ -1,15 +1,12 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
-interface Props {
-  SetPage(page: number): void;
-}
+interface Props { SetPage(page: number): void; }
 
 export const TopTabBar: React.FC<Props> = ({ SetPage }) => {
-  const setCurrentPage = (page: number) => {
-    SetPage(page);
-  }
+  const setCurrentPage = (page: number) => { SetPage(page); }
+
   return (
     <Navbar bg="dark" variant="dark" expand="sm">
       <Navbar.Brand className="text-primary">FatKatChat</Navbar.Brand>

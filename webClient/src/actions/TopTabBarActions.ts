@@ -1,10 +1,7 @@
 import { TopTabBarEvents } from "../events/TopTabBarEvents"
 
 const makeAction = <T extends TopTabBarEvents, P>(type: T) => (payload: P) => {
-  return {
-    type,
-    payload,
-  }
+  return { type, payload }
 }
 
 export const SetPage = makeAction<TopTabBarEvents.SET_PAGE, number>(TopTabBarEvents.SET_PAGE);

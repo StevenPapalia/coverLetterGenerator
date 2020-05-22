@@ -6,15 +6,11 @@ import { IAction, SetPage } from '../actions/TopTabBarActions';
 import { IStoreState } from '../store';
 
 const mapStateToProps = (state: IStoreState) => {
-  return {
-    currentPage: state.tobTabBar.currentPage,
-  };
+  return { currentPage: state.tobTabBar.currentPage };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
-  return {
-    SetPage: (page: number) => dispatch(SetPage(page)),
-  };
+  return { SetPage: (page: number) => dispatch(SetPage(page)) };
 };
 
 export const TopTabBar = compose(
