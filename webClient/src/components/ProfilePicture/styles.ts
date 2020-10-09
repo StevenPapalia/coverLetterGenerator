@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { defaultProfilePicture, removeImage } from "../../paths"
 
-export const ImageContianer = styled("form")`
+export const ImageContainer = styled("form")`
   border-radius: 25px;
   background-color: lightyellow;
   margin: 0px;

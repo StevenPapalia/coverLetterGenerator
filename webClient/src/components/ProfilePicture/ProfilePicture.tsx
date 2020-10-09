@@ -1,5 +1,5 @@
 import React, { useCallback, FC, ChangeEvent, memo } from "react";
-import { ImageContianer, UploadImage, RemoveImage } from "./styles";
+import { ImageContainer, UploadImage, RemoveImage } from "./styles";
 
 const convertFileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
   }, []);
 
   return (
-    <ImageContianer name="Profile Picture" onSubmit={handleRemoveImage}>
+    <ImageContainer name="Profile Picture" onSubmit={handleRemoveImage}>
       <UploadImage 
         accept="image/*"
         type="file"
@@ -48,7 +48,7 @@ const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
         onChange={handleUploadImage}
       />
       <RemoveImage type="submit" value="" />
-    </ImageContianer>
+    </ImageContainer>
   );
 }
 
