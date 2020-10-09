@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultProfilePicture, removeImage } from "../.././keys"
+import { defaultProfilePicture, removeImage } from "../../paths"
 
 export const ImageContianer = styled("form")`
   border-radius: 25px;

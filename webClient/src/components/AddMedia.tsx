@@ -4,10 +4,12 @@ interface Props {
 
 }
 
-export const AddMedia: React.FC<Props> = () => {
+const AddMedia: React.FC<Props> = () => {
   return (
     <div>
       <h1>AddMedia Page</h1>
     </div>
-  )
+  );
 }
+
+export default AddMedia;

@@ -21,9 +21,11 @@ const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
   };
 };
 
-export const Profile = compose(
+const Profile = compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
   )
 )(Component);
+
+export default Profile;
