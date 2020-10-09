@@ -1,0 +1,3 @@
+export enum ProfilePictureEvents {
+  UPLOAD_PROFILE_PICTURE = "PROFILE_PICTURE/UPLOAD_IMAGE",
+}

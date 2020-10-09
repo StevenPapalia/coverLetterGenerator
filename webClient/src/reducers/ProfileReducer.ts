@@ -11,6 +11,7 @@ const initState: IState = {
   age: 24,
   name: "",
 }
+
 export const reducer = (state: IState = initState, action: IAction): IState => {
   switch(action.type) {
     case ProfileEvents.SET_NAME:
