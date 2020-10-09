@@ -1,11 +1,6 @@
 import React, { useCallback, FC, ChangeEvent, memo } from "react";
 import { ImageContianer, UploadImage, RemoveImage } from "./styles";
 
-interface Props {
-  profilePicture: string;
-  uploadImage(char: string): void;
-}
-
 const convertFileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -16,6 +11,11 @@ const convertFileToBase64 = (file: File): Promise<string> => {
     if (file) reader.readAsDataURL(file);
   });
 };
+
+interface Props {
+  profilePicture: string;
+  uploadImage(char: string): void;
+}
 
 const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
   
@@ -49,18 +49,16 @@ const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
   );
 
   return (
-    <ImageContianer>
-      <form name="Profile Picture" onSubmit={handleRemoveImage}>
-        <UploadImage 
-          accept="image/*"
-          type="file"
-          title=""
-          imgUrl={profilePicture}
-          message="Upload Profile Pitcure"
-          onChange={handleFileChange}
-        />
-        <RemoveImage type="submit" value="" />
-      </form>
+    <ImageContianer name="Profile Picture" onSubmit={handleRemoveImage}>
+      <UploadImage 
+        accept="image/*"
+        type="file"
+        title=""
+        imgUrl={profilePicture}
+        message="Upload Profile Pitcure"
+        onChange={handleFileChange}
+      />
+      <RemoveImage type="submit" value="" />
     </ImageContianer>
   );
 }

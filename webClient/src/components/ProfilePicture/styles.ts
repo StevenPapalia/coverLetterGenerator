@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { defaultProfilePicture, removeImage } from "../.././keys"
 
-export const ImageContianer = styled("div")`
+export const ImageContianer = styled("form")`
   border-radius: 25px;
   background-color: lightyellow;
   margin: 0px;
@@ -54,7 +54,7 @@ export const UploadImage = styled("input")<ImageProps>`
   }
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 4px green;
+    box-shadow: 0px 0px 10px green;
   }
 `;
 
