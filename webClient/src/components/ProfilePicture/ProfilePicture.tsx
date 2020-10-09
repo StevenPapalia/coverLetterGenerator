@@ -19,33 +19,33 @@ interface Props {
 
 const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
   
-  const handleFileChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-      event.persist();
-      const files = event.target.files;
-      if (!files || !files.length) {
-        throw new Error("Error uploading image");
-      } else {
-        convertFileToBase64(files[0])
-          .then(base64 => uploadImage(base64))
-          .catch(error => console.log(error))
-          .finally(() => event.target.value = ""); // reset to empty to allow upload after error or reupload of same file
-      }
-    }, []);
+  const handleUploadImage = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    event.persist();
+    const files = event.target.files;
+    if (!files || !files.length) {
+      throw new Error("Error uploading image");
+    } else {
+      convertFileToBase64(files[0])
+        .then(base64 => uploadImage(base64))
+        .catch(error => console.log(error))
+        .finally(() => event.target.value = ""); // reset element to empty to allow upload after error or reupload of same file
+    }
+  }, []);
 
   const handleRemoveImage = useCallback((event: ChangeEvent<HTMLFormElement>) => {
-      uploadImage("");
-      event.preventDefault();
-    }, []);
+    uploadImage("");
+    event.preventDefault();
+  }, []);
 
   return (
     <ImageContianer name="Profile Picture" onSubmit={handleRemoveImage}>
       <UploadImage 
         accept="image/*"
         type="file"
-        message="Upload Profile Pitcure"
+        message="Upload Profile Picture"
         title=""
         imgUrl={profilePicture}
-        onChange={handleFileChange}
+        onChange={handleUploadImage}
       />
       <RemoveImage type="submit" value="" />
     </ImageContianer>

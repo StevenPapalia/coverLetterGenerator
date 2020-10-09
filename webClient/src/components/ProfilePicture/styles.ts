@@ -52,6 +52,10 @@ export const UploadImage = styled("input")<ImageProps>`
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
+  &:hover {
+    outline: none;
+    box-shadow: 0px 0px 10px green;
+  }
   &:focus {
     outline: none;
     box-shadow: 0px 0px 10px green;
@@ -70,8 +74,12 @@ export const RemoveImage = styled("input")`
   background-repeat: no-repeat;
   background-image: url(${ removeImage });
   cursor: pointer;
+  &:hover {
+    outline: none;
+    box-shadow: 0px 0px 10px red;
+  }
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 10px green;
+    box-shadow: 0px 0px 10px red;
   }
 `;
