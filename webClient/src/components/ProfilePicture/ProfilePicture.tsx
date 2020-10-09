@@ -6,8 +6,7 @@ interface Props {
   uploadImage(char: string): void;
 }
 
-
-const getFileFromInputAsBase64String = (file: File): Promise<string> => {
+const convertFileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onerror = reject;
@@ -18,7 +17,7 @@ const getFileFromInputAsBase64String = (file: File): Promise<string> => {
   });
 };
 
-export const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
+const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
   
   const handleFileChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
       event.persist();
@@ -27,13 +26,13 @@ export const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
         throw new Error("Error uploading bad file");
       }
       Array.from(files).forEach(file => {
-        getFileFromInputAsBase64String(file)
+        convertFileToBase64(file)
           .then(base64 => {
             uploadImage(base64);
             event.target.value = "";
           })
           .catch(error => {
-            console.log(`${error}`);
+            console.log(error);
             event.target.value = "";
           });
       });
@@ -41,7 +40,7 @@ export const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
     []
   );
 
-  const handleRemoveImageSubmit = useCallback(
+  const handleRemoveImage = useCallback(
     (event: ChangeEvent<HTMLFormElement>) => {
       uploadImage("");
       event.preventDefault();
@@ -51,10 +50,11 @@ export const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
 
   return (
     <ImageContianer>
-      <form name="Profile Picture" onSubmit={handleRemoveImageSubmit}>
+      <form name="Profile Picture" onSubmit={handleRemoveImage}>
         <UploadImage 
           accept="image/*"
           type="file"
+          title=""
           imgUrl={profilePicture}
           message="Upload Profile Pitcure"
           onChange={handleFileChange}

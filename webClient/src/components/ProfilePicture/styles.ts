@@ -11,8 +11,8 @@ export const ImageContianer = styled("div")`
   float: left;
   position: relative;
   &:focus {
-        outline: none;
-    }
+    outline: none;
+  }
 `;
 
 interface ImageProps {
@@ -35,9 +35,9 @@ export const UploadImage = styled("input")<ImageProps>`
     visibility: hidden;
   }
   &:focus {
-        outline: none;
-        box-shadow: 0px 0px 2px red;
-    }
+    outline: none;
+    box-shadow: 0px 0px 4px green;
+  }
   ::before {
     content: "${({ imgUrl, message }) => imgUrl ? "" : message }";
     width: 150px;
@@ -70,4 +70,8 @@ export const RemoveImage = styled("input")`
   background-repeat: no-repeat;
   background-image: url(${() => removeImgPath });
   cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px green;
+  }
 `;

@@ -9,7 +9,7 @@ export const TopTabBar: React.FC<Props> = ({ SetPage }) => {
 
   return (
     <Navbar bg="dark" variant="dark" expand="sm">
-      <Navbar.Brand href="#home" className="text-primary">FatKatChat</Navbar.Brand>
+      <Navbar.Brand className="text-primary">FatKatChat</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
