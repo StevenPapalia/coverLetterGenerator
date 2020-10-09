@@ -15,47 +15,45 @@ interface Props {
 
 export const App: FC<Props> = () => {
   return (
-    <>
-      <Container style={{ padding: 0 }}>
-        <TopNavBar />
-        <Router>
-          <Switch>
-            <Route exact path="/" >
-              <Redirect to="/home" />
-            </Route>
-            <Route path="/home">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Home />
-              </Suspense>
-            </Route>
-            <Route path="/search">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Search />
-              </Suspense>
-            </Route>
-            <Route path="/addmedia">
-              <Suspense fallback={<div>Loading...</div>}>
-                <AddMedia />
-              </Suspense>
-            </Route>
-            <Route path="/messages">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Messages />
-              </Suspense>
-            </Route>
-            <Route path="/profile">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Profile />
-              </Suspense>
-            </Route>
-            <Route>
-              <Suspense fallback={<div>Loading...</div>}>
-                <FourZeroFour />
-              </Suspense>
-            </Route>
-          </Switch>
-        </Router>
-      </Container>
-      </>
+    <Container style={{ padding: 0 }}>
+      <TopNavBar />
+      <Router>
+        <Switch>
+          <Route exact path="/" >
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/home">
+            <Suspense fallback={<div>Loading...</div>}>
+              <Home />
+            </Suspense>
+          </Route>
+          <Route path="/search">
+            <Suspense fallback={<div>Loading...</div>}>
+              <Search />
+            </Suspense>
+          </Route>
+          <Route path="/addmedia">
+            <Suspense fallback={<div>Loading...</div>}>
+              <AddMedia />
+            </Suspense>
+          </Route>
+          <Route path="/messages">
+            <Suspense fallback={<div>Loading...</div>}>
+              <Messages />
+            </Suspense>
+          </Route>
+          <Route path="/profile">
+            <Suspense fallback={<div>Loading...</div>}>
+              <Profile />
+            </Suspense>
+          </Route>
+          <Route>
+            <Suspense fallback={<div>Loading...</div>}>
+              <FourZeroFour />
+            </Suspense>
+          </Route>
+        </Switch>
+      </Router>
+    </Container>
   );
 }
