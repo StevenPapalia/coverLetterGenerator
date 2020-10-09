@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
-const defaultImgPath: string = "/Users/stevenpapalia/Desktop/other/fatKatChat/webClient/src/assets/defaultProfilePicture.png"
-const removeImgPath: string = "/Users/stevenpapalia/Desktop/other/fatKatChat/webClient/src/assets/removeImage.png"
+import { defaultProfilePicture, removeImage } from "../.././keys"
 
 export const ImageContianer = styled("div")`
   border-radius: 25px;
@@ -10,6 +8,8 @@ export const ImageContianer = styled("div")`
   padding: 0px;
   float: left;
   position: relative;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 10px chocolate;
   &:focus {
     outline: none;
   }
@@ -26,18 +26,11 @@ export const UploadImage = styled("input")<ImageProps>`
   height: 200px;
   border-radius: 50%;
   background-color: #f0f0f0;
-  background-image: url(${({ imgUrl }) => imgUrl ? imgUrl : defaultImgPath });
+  background-image: url(${({ imgUrl }) => imgUrl ? imgUrl : defaultProfilePicture });
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   color: transparent;
-  ::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 4px green;
-  }
   ::before {
     content: "${({ imgUrl, message }) => imgUrl ? "" : message }";
     width: 150px;
@@ -56,6 +49,13 @@ export const UploadImage = styled("input")<ImageProps>`
     color: #878787;
     cursor: pointer;
   }
+  ::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px green;
+  }
 `;
 
 export const RemoveImage = styled("input")`
@@ -68,10 +68,10 @@ export const RemoveImage = styled("input")`
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(${() => removeImgPath });
+  background-image: url(${ removeImage });
   cursor: pointer;
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 4px green;
+    box-shadow: 0px 0px 10px green;
   }
 `;
