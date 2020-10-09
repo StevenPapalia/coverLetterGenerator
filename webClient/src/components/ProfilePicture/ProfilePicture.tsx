@@ -22,7 +22,7 @@ const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
   const handleFileChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
       event.persist();
       const files = event.target.files;
-      if (files === null) {
+      if (!files || !files.length) {
         throw new Error("Error uploading image");
       } else {
         convertFileToBase64(files[0])
