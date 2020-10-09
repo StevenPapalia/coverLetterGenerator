@@ -1,13 +1,13 @@
 import React, { lazy, Suspense, FC } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
-import { TopNavBar } from '../containers/TopNavBarContainer';
-const Home = lazy(() => import('./Home'));
-const Search = lazy(() => import('./Search'));
-const AddMedia = lazy(() => import('./AddMedia'));
-const Messages = lazy(() => import('./Messages'));
-const Profile = lazy(() => import('../containers/ProfileContainer'));
-const FourZeroFour = lazy(() => import('./FourZeroFour'));
+import { AppWrapper } from './styles';
+import { TopNavBar } from '../../containers/TopNavBarContainer';
+const Home = lazy(() => import('../Home'));
+const Search = lazy(() => import('../Search'));
+const AddMedia = lazy(() => import('../AddMedia'));
+const Messages = lazy(() => import('../Messages'));
+const Profile = lazy(() => import('../../containers/ProfileContainer'));
+const FourZeroFour = lazy(() => import('../FourZeroFour'));
 
 interface Props {
 
@@ -15,7 +15,7 @@ interface Props {
 
 export const App: FC<Props> = () => {
   return (
-    <Container style={{ padding: 0 }}>
+    <AppWrapper>
       <TopNavBar />
       <Router>
         <Switch>
@@ -54,6 +54,6 @@ export const App: FC<Props> = () => {
           </Route>
         </Switch>
       </Router>
-    </Container>
+    </AppWrapper>
   );
 }

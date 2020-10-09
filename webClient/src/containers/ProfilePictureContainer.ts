@@ -13,8 +13,8 @@ const mapStateToProps = (state: IStoreState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
   return {
-    uploadImage: (char: string) => {
-      dispatch(UploadImage(char));
+    uploadImage: (imgUrl: string) => {
+      dispatch(UploadImage(imgUrl));
     },
   };
 };

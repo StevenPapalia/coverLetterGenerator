@@ -14,7 +14,7 @@ const convertFileToBase64 = (file: File): Promise<string> => {
 
 interface Props {
   profilePicture: string;
-  uploadImage(char: string): void;
+  uploadImage(imgUrl: string): void;
 }
 
 const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
@@ -23,39 +23,28 @@ const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
       event.persist();
       const files = event.target.files;
       if (files === null) {
-        throw new Error("Error uploading bad file");
+        throw new Error("Error uploading image");
+      } else {
+        convertFileToBase64(files[0])
+          .then(base64 => uploadImage(base64))
+          .catch(error => console.log(error))
+          .finally(() => event.target.value = ""); // reset to empty to allow upload after error or reupload of same file
       }
-      Array.from(files).forEach(file => {
-        convertFileToBase64(file)
-          .then(base64 => {
-            uploadImage(base64);
-            event.target.value = "";
-          })
-          .catch(error => {
-            console.log(error);
-            event.target.value = "";
-          });
-      });
-    },
-    []
-  );
+    }, []);
 
-  const handleRemoveImage = useCallback(
-    (event: ChangeEvent<HTMLFormElement>) => {
+  const handleRemoveImage = useCallback((event: ChangeEvent<HTMLFormElement>) => {
       uploadImage("");
       event.preventDefault();
-    },
-    []
-  );
+    }, []);
 
   return (
     <ImageContianer name="Profile Picture" onSubmit={handleRemoveImage}>
       <UploadImage 
         accept="image/*"
         type="file"
+        message="Upload Profile Pitcure"
         title=""
         imgUrl={profilePicture}
-        message="Upload Profile Pitcure"
         onChange={handleFileChange}
       />
       <RemoveImage type="submit" value="" />
@@ -64,4 +53,3 @@ const ProfilePicture: FC<Props> = ({ profilePicture, uploadImage }) => {
 }
 
 export const ProfilePictureMemo = memo(ProfilePicture);
-  
