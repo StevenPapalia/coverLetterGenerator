@@ -38,7 +38,6 @@ export const UploadImage = styled("input")<ImageProps>`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
