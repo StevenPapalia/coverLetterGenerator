@@ -1,12 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, ChangeEvent, FC } from 'react';
 import { ProfilePicture } from '../containers/ProfilePictureContainer';
-import styled from "styled-components";
-
-const ProfileWrapper = styled("div")`
-  margin: 10px;
-  width: 200px;
-  height: 200px; 
-`;
 
 interface Props {
   age: number;
@@ -15,16 +8,14 @@ interface Props {
   changeName(name: string): void;
 }
 
-export const Profile: React.FC<Props> = ({ age, name, onAgeButtonClick, changeName }) => {
+export const Profile: FC<Props> = ({ age, name, onAgeButtonClick, changeName }) => {
   
-  const handleNameChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNameChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     changeName(event.target.value);
   }, []);
 
   return (
-    <>
-    <ProfileWrapper>
-      
+    <>      
       <h1>Your Profile</h1>
       <ProfilePicture />
 
@@ -42,8 +33,6 @@ export const Profile: React.FC<Props> = ({ age, name, onAgeButtonClick, changeNa
           </input>
         </form>
       </div>
-
-      </ProfileWrapper>
     </>
   )
 }
