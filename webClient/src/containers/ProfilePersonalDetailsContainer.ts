@@ -1,14 +1,14 @@
-import { Profile as Component } from '../components/Profile';
+import { ProfilePersonalDetailsMemo as Component } from '../components/Profile/ProfilePersonalDetails/ProfilePersonalDetails';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Dispatch } from 'react';
-import { IAction, SetAge, SetName } from '../actions/ProfileActions';
+import { IAction, SetAge, SetName } from '../actions/ProfilePersonalDetailsActions';
 import { IStoreState } from '../store';
 
 const mapStateToProps = (state: IStoreState) => {
   return {
-    age: state.profile.age,
-    name: state.profile.name,
+    age: state.profilePersonalDetails.age,
+    name: state.profilePersonalDetails.name,
   };
 };
 
@@ -21,11 +21,9 @@ const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
   };
 };
 
-const Profile = compose(
+export const ProfilePersonalDetails = compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
   )
 )(Component);
-
-export default Profile;

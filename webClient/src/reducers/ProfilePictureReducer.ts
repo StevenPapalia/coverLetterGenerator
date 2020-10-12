@@ -7,7 +7,7 @@ const initState: IState = { imgUrl: "" }
 
 export const reducer = (state: IState = initState, action: IAction): IState => {
   switch(action.type) {
-    case ProfilePictureEvents.UPLOAD_PROFILE_PICTURE:
+    case ProfilePictureEvents.EDIT_PROFILE_PICTURE:
       return { ...state, imgUrl: action.payload };
     default: 
       return state;

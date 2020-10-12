@@ -1,8 +1,8 @@
-import { ProfilePictureMemo as Component } from "../components/ProfilePicture/ProfilePicture"
+import { ProfilePictureMemo as Component } from "../components/Profile/ProfilePicture/ProfilePicture"
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Dispatch } from 'react';
-import { IAction, UploadImage } from '../actions/ProfilePictureActions';
+import { IAction, EditImage } from '../actions/ProfilePictureActions';
 import { IStoreState } from '../store';
 
 const mapStateToProps = (state: IStoreState) => {
@@ -13,8 +13,8 @@ const mapStateToProps = (state: IStoreState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
   return {
-    uploadImage: (imgUrl: string) => {
-      dispatch(UploadImage(imgUrl));
+    editImage: (imgUrl: string) => {
+      dispatch(EditImage(imgUrl));
     },
   };
 };

@@ -1,5 +1,5 @@
-import { ProfileEvents } from "../events/ProfileEvents";
-import { IAction } from "../actions/ProfileActions";
+import { ProfilePersonalDetailsEvents } from "../events/ProfilePersonalDetailsEvents";
+import { IAction } from "../actions/ProfilePersonalDetailsActions";
 
 
 export interface IState {
@@ -14,9 +14,9 @@ const initState: IState = {
 
 export const reducer = (state: IState = initState, action: IAction): IState => {
   switch(action.type) {
-    case ProfileEvents.SET_NAME:
+    case ProfilePersonalDetailsEvents.SET_NAME:
       return { ...state, name: action.payload };
-    case ProfileEvents.SET_AGE:
+    case ProfilePersonalDetailsEvents.SET_AGE:
       return { ...state, age: action.payload };
     default: 
       return state;

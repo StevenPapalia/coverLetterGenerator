@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultProfilePicture, removeImage } from "../../paths"
+import { defaultProfilePicture, removeImage } from "../../../paths"
 
 export const ImageContainer = styled("form")`
   border-radius: 25px;
@@ -57,7 +57,6 @@ export const UploadImage = styled("input")<ImageProps>`
   }
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 10px green;
   }
 `;
 
@@ -79,6 +78,5 @@ export const RemoveImage = styled("input")`
   }
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 10px red;
   }
 `;

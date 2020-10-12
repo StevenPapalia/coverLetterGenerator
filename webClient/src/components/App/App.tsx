@@ -6,7 +6,7 @@ const Home = lazy(() => import('../Home'));
 const Search = lazy(() => import('../Search'));
 const AddMedia = lazy(() => import('../AddMedia'));
 const Messages = lazy(() => import('../Messages'));
-const Profile = lazy(() => import('../../containers/ProfileContainer'));
+const Profile = lazy(() => import('../Profile/Profile'));
 const FourZeroFour = lazy(() => import('../FourZeroFour'));
 
 interface Props {
@@ -56,8 +56,6 @@ export const App: FC<Props> = () => {
           </Switch>
         </Router>
       </MainContentSection>
-      
-
     </AppWrapper>
   );
 }

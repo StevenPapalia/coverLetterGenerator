@@ -1,5 +1,4 @@
-import React, { useCallback, ChangeEvent, FC } from 'react';
-import { ProfilePicture } from '../containers/ProfilePictureContainer';
+import React, { useCallback, FC, ChangeEvent, memo } from "react";
 
 interface Props {
   age: number;
@@ -8,17 +7,16 @@ interface Props {
   changeName(name: string): void;
 }
 
-export const Profile: FC<Props> = ({ age, name, onAgeButtonClick, changeName }) => {
-  
+const ProfilePersonalDetails: FC<Props> = ({ age, name, onAgeButtonClick, changeName }) => {
+
   const handleNameChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     changeName(event.target.value);
   }, []);
 
   return (
     <>      
-      <h1>Your Profile</h1>
-      <ProfilePicture />
-
+    <div style={{float: "left", clear: "left"}}>
+      TEst..
       <div>
         <h1>Age: {age}</h1>
         <h1>Name: {name}</h1>
@@ -33,6 +31,9 @@ export const Profile: FC<Props> = ({ age, name, onAgeButtonClick, changeName }) 
           </input>
         </form>
       </div>
+    </div>
     </>
-  )
+  );
 }
+
+export const ProfilePersonalDetailsMemo = memo(ProfilePersonalDetails);
