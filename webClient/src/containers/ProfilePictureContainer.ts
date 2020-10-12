@@ -1,4 +1,4 @@
-import { ProfilePictureMemo as Component } from "../components/Profile/ProfilePicture/ProfilePicture"
+import { ProfilePictureMemo as Component } from "../components/App/Profile/ProfilePicture/ProfilePicture"
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Dispatch } from 'react';

@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { defaultProfilePicture, removeImage } from "../../../paths"
+import { defaultProfilePicture, removeImage } from "../../../../paths"
 
 export const ImageContainer = styled("form")`
+  width: 222px;
   border-radius: 25px;
   background-color: lightyellow;
   margin: 0px;
   padding: 0px;
-  float: left;
   position: relative;
   border: 1px solid lightgray;
   box-shadow: 0px 0px 10px chocolate;
@@ -15,12 +15,12 @@ export const ImageContainer = styled("form")`
   }
 `;
 
-interface ImageProps {
+interface UploadImageProps {
   imgUrl: string;
   message: string;
 };
 
-export const UploadImage = styled("input")<ImageProps>`
+export const UploadImage = styled("input")<UploadImageProps>`
   margin: 10px;
   width: 200px;
   height: 200px;

@@ -1,4 +1,4 @@
-import { ProfilePersonalDetailsMemo as Component } from '../components/Profile/ProfilePersonalDetails/ProfilePersonalDetails';
+import { ProfilePersonalDetailsMemo as Component } from '../components/App/Profile/ProfilePersonalDetails/ProfilePersonalDetails';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Dispatch } from 'react';

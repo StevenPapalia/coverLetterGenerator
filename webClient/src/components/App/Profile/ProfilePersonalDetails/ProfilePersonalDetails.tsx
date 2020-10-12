@@ -1,4 +1,5 @@
 import React, { useCallback, FC, ChangeEvent, memo } from "react";
+// import { PersonalDetailsForm } from './styles';
 
 interface Props {
   age: number;
@@ -14,8 +15,8 @@ const ProfilePersonalDetails: FC<Props> = ({ age, name, onAgeButtonClick, change
   }, []);
 
   return (
-    <>      
-    <div style={{float: "left", clear: "left"}}>
+    // turn into a proper form with proper fields and proper functions
+    <div>
       TEst..
       <div>
         <h1>Age: {age}</h1>
@@ -31,8 +32,7 @@ const ProfilePersonalDetails: FC<Props> = ({ age, name, onAgeButtonClick, change
           </input>
         </form>
       </div>
-    </div>
-    </>
+    </div>   
   );
 }
 

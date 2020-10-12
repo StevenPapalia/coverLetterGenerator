@@ -1,4 +1,5 @@
 import React from 'react';
+import { Jumbo } from './App/styles';
 
 interface Props {
 
@@ -6,9 +7,9 @@ interface Props {
 
 const Home: React.FC<Props> = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <>
+      <Jumbo message="Home Page"/>
+    </>
   );
 }
 
