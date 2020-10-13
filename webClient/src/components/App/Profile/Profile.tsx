@@ -17,6 +17,18 @@ const Profile: FC<Props> = () => {
       <ProfileSection>
         <ProfilePersonalDetails />
       </ProfileSection>
+      <ProfileSection>
+        <div>Top Hard Skills</div>
+      </ProfileSection>
+      <ProfileSection>
+        <div>Top Soft Skills</div>
+      </ProfileSection>
+      <ProfileSection>
+        <div>top skills asked for in the job posting</div>
+      </ProfileSection>
+      <ProfileSection>
+        <div>basic information about the company that you are applying to</div>
+      </ProfileSection>
       {/* // make submit */}
     </>
   );

@@ -1,112 +1,100 @@
 import React, { useCallback, FC, ChangeEvent, memo } from "react";
 import { PersonalDetail } from './styles';
 
-interface Props {
-  age: number;
+type ProfilePersonalDetails = {
   name: string;
-  onAgeButtonClick(): void;
-  changeName(name: string): void;
+  email: string;
+  phone: string;
+  location: string;
+  linkedIn: string;
+  github: string;
+  website: string;
+};
+
+interface Props {
+  personalDetails: ProfilePersonalDetails;
+  setPersonalDetails(personalDetails: ProfilePersonalDetails): void;
 }
 
-const ProfilePersonalDetails: FC<Props> = ({ age, name, onAgeButtonClick, changeName }) => {
+const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails }) => {
 
-  const handleNameChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    changeName(event.target.value);
-  }, []);
-
-  const handleAgeChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    onAgeButtonClick();
-  }, []);
+    setPersonalDetails({ ...personalDetails, [event.target.name]: event.target.value });
+  }, [personalDetails]);
 
   return (
     <form>
-      <PersonalDetail>Name: {name}
+      <PersonalDetail>Name:
         <input 
           type="text"
           placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
-          >
-        </input>
-      </PersonalDetail>
-      <PersonalDetail>Age: {age}
-        <input 
-          type="number"
-          placeholder="Enter Age"
-          value={age}
-          onChange={handleAgeChange}
-          >
-        </input>
-      </PersonalDetail>
-
-
-
-      <PersonalDetail>Name:
-        <input 
-          type="number"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
+          name="name"
+          value={personalDetails.name}
+          onChange={handleChange}
           >
         </input>
       </PersonalDetail>
       <PersonalDetail>Email Address:
         <input 
-          type="number"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
+          type="email" 
+          placeholder="Enter Email"
+          name="email"
+          value={personalDetails.email}
+          onChange={handleChange}
           >
         </input>
       </PersonalDetail>
       <PersonalDetail>Phone Number:
         <input 
-          type="number"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
+          type="text"
+          placeholder="Enter Phone"
+          name="phone"
+          value={personalDetails.phone}
+          onChange={handleChange}
           >
         </input>
       </PersonalDetail>
       <PersonalDetail>Location:
         <input 
-          type="number"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
+          type="text"
+          placeholder="Enter Location"
+          name="location"
+          value={personalDetails.location}
+          onChange={handleChange}
           >
         </input>
       </PersonalDetail>
       <PersonalDetail>LinkedIn Profile:
         <input 
-          type="number"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
+          type="text"
+          placeholder="Enter LinkedIn Profile"
+          name="linkedIn"
+          value={personalDetails.linkedIn}
+          onChange={handleChange}
           >
         </input>
       </PersonalDetail>
-      <PersonalDetail>GitHub Profile:
+      <PersonalDetail>Github Profile:
         <input 
-          type="number"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
+          type="text"
+          placeholder="Enter Github Profile"
+          name="github"
+          value={personalDetails.github}
+          onChange={handleChange}
           >
         </input>
       </PersonalDetail>
       <PersonalDetail>Personal Website:
         <input 
-          type="number"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleNameChange}
+          type="text"
+          placeholder="Enter Personal Website"
+          name="website"
+          value={personalDetails.website}
+          onChange={handleChange}
           >
         </input>
       </PersonalDetail>
-      <input type="submit" value="Submit" />
     </form>   
   );
 }

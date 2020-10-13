@@ -4,16 +4,24 @@ const makeAction = <T extends ProfilePersonalDetailsEvents, P>(type: T) => (payl
   return { type, payload }
 }
 
-export const SetName = makeAction<ProfilePersonalDetailsEvents.SET_NAME, string>(ProfilePersonalDetailsEvents.SET_NAME);
+export const SetPersonalDetails = makeAction<ProfilePersonalDetailsEvents.SET_PERSONAL_DETAILS, {
+  name: string;
+  email: string,
+  phone: string,
+  location: string,
+  linkedIn: string,
+  github: string,
+  website: string,
+}>(ProfilePersonalDetailsEvents.SET_PERSONAL_DETAILS);
 
-export const SetAge = makeAction<ProfilePersonalDetailsEvents.SET_AGE, number>(ProfilePersonalDetailsEvents.SET_AGE);
+
 
 interface IStringMap<T> { [key: string]: T }
 type IAnyFunction = (...args: any[]) => any;
 type IActionUnion<A extends IStringMap<IAnyFunction>> = ReturnType<A[keyof A]>;
+
 const actions = {
-  SetName,
-  SetAge,
+  SetPersonalDetails,
 }
 
 export type IAction = IActionUnion<typeof actions>;

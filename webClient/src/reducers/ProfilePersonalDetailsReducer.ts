@@ -1,23 +1,26 @@
 import { ProfilePersonalDetailsEvents } from "../events/ProfilePersonalDetailsEvents";
 import { IAction } from "../actions/ProfilePersonalDetailsActions";
 
-
 export interface IState {
-  age: number;
-  name: string;
+  personalDetails: IAction["payload"]
 }
 
 const initState: IState = {
-  age: 24,
-  name: "",
+  personalDetails: {
+    name: "",
+    email: "",
+    phone: "",
+    location: "",
+    linkedIn: "",
+    github: "",
+    website: "",
+  }
 }
 
 export const reducer = (state: IState = initState, action: IAction): IState => {
   switch(action.type) {
-    case ProfilePersonalDetailsEvents.SET_NAME:
-      return { ...state, name: action.payload };
-    case ProfilePersonalDetailsEvents.SET_AGE:
-      return { ...state, age: action.payload };
+    case ProfilePersonalDetailsEvents.SET_PERSONAL_DETAILS:
+      return { personalDetails: action.payload };
     default: 
       return state;
   }
