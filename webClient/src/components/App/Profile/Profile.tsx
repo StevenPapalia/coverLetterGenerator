@@ -11,12 +11,8 @@ const Profile: FC<Props> = () => {
   return (
     <>      
       <Jumbo message="Your Profile" />
-      <ProfileSection>
-        <ProfilePicture />
-      </ProfileSection>
-      <ProfileSection>
-        <ProfilePersonalDetails />
-      </ProfileSection>
+      <ProfileSection><ProfilePicture /></ProfileSection>
+      <ProfileSection><ProfilePersonalDetails /></ProfileSection>
       <ProfileSection>
         <div>Top Hard Skills</div>
       </ProfileSection>

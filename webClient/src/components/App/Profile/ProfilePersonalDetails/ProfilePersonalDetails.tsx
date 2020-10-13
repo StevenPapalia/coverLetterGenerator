@@ -1,5 +1,7 @@
 import React, { useCallback, FC, ChangeEvent, memo } from "react";
 import { PersonalDetail } from './styles';
+import Cleave from 'cleave.js/react';
+import "cleave.js/dist/addons/cleave-phone.US";
 
 type ProfilePersonalDetails = {
   name: string;
@@ -32,8 +34,7 @@ const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails
           name="name"
           value={personalDetails.name}
           onChange={handleChange}
-          >
-        </input>
+        />
       </PersonalDetail>
       <PersonalDetail>Email Address:
         <input 
@@ -42,18 +43,17 @@ const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails
           name="email"
           value={personalDetails.email}
           onChange={handleChange}
-          >
-        </input>
+        />
       </PersonalDetail>
       <PersonalDetail>Phone Number:
-        <input 
+        <Cleave
+          options={{phone: true, phoneRegionCode: "US"}}
           type="text"
           placeholder="Enter Phone"
           name="phone"
           value={personalDetails.phone}
           onChange={handleChange}
-          >
-        </input>
+        />
       </PersonalDetail>
       <PersonalDetail>Location:
         <input 
@@ -62,38 +62,34 @@ const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails
           name="location"
           value={personalDetails.location}
           onChange={handleChange}
-          >
-        </input>
+          />
       </PersonalDetail>
       <PersonalDetail>LinkedIn Profile:
         <input 
           type="text"
-          placeholder="Enter LinkedIn Profile"
+          placeholder="Enter LinkedIn Profile URL"
           name="linkedIn"
           value={personalDetails.linkedIn}
           onChange={handleChange}
-          >
-        </input>
+          />
       </PersonalDetail>
       <PersonalDetail>Github Profile:
         <input 
           type="text"
-          placeholder="Enter Github Profile"
+          placeholder="Enter Github Profile URL"
           name="github"
           value={personalDetails.github}
           onChange={handleChange}
-          >
-        </input>
+          />
       </PersonalDetail>
       <PersonalDetail>Personal Website:
         <input 
           type="text"
-          placeholder="Enter Personal Website"
+          placeholder="Enter Personal Website URL"
           name="website"
           value={personalDetails.website}
           onChange={handleChange}
-          >
-        </input>
+          />
       </PersonalDetail>
     </form>   
   );

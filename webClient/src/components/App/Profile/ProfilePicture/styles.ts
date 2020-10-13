@@ -4,8 +4,9 @@ import { defaultProfilePicture, removeImage } from "../../../../paths"
 export const ImageContainer = styled("form")`
   width: 222px;
   border-radius: 25px;
-  background-color: lightyellow;
-  margin: 0px;
+  background-color: blanchedalmond;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0px;
   position: relative;
   border: 1px solid lightgray;
