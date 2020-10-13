@@ -6,10 +6,10 @@ export const AppWrapper = styled("div")`
   margin-right: auto;
   margin-left: auto;  
   @media (min-width: 700px) {
-    max-width: 700px;
+    width: 700px;
   }
   @media (min-width: 900px) {
-    max-width: 900px;
+    width: 900px;
   }
 `;
 
@@ -20,17 +20,16 @@ export const MainContentSection = styled("div")`
   border-right: 0.5px solid #007bff;
   border-bottom: 0.5px solid #007bff;
   @media (min-width: 700px) {
-    max-width: 700px;
+    width: 700px;
   }
   @media (min-width: 900px) {
-    max-width: 900px;
+    width: 900px;
   }
 `;
 
 interface JumboProps {
   message: string;
 };
-
 
 export const Jumbo = styled(Jumbotron)<JumboProps>`
   background-color: blanchedalmond;
