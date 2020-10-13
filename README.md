@@ -4,7 +4,7 @@
 
 ### How To Use
 1. Upload a profile picture
-2. Fill out details about your profile (Name, Email, LinkedIn, etc.)
+2. Fill out details about your profile (Name, Email Address, Phone Number, Location, LinkedIn Profile, GitHub Profile, Personal Website)
 3. Input and rank 1 to 5 of your top "hard" skills that you want to show off in your cover letter
 4. Input and rank 1 to 5 of your top "soft" skills that you want to show off in your cover letter
 5. Input and rank 1 to 5 of the top skills asked for in the job posting

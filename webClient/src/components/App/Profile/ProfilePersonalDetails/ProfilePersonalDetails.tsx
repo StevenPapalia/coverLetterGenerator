@@ -1,5 +1,5 @@
 import React, { useCallback, FC, ChangeEvent, memo } from "react";
-// import { PersonalDetailsForm } from './styles';
+import { PersonalDetail } from './styles';
 
 interface Props {
   age: number;
@@ -11,28 +11,103 @@ interface Props {
 const ProfilePersonalDetails: FC<Props> = ({ age, name, onAgeButtonClick, changeName }) => {
 
   const handleNameChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     changeName(event.target.value);
   }, []);
 
+  const handleAgeChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    onAgeButtonClick();
+  }, []);
+
   return (
-    // turn into a proper form with proper fields and proper functions
-    <div>
-      TEst..
-      <div>
-        <h1>Age: {age}</h1>
-        <h1>Name: {name}</h1>
-        <button onClick={onAgeButtonClick}>Change Age</button>
-        <form>
-          <input 
-            type="text"
-            placeholder="Enter Name"
-            value={name}
-            onChange={handleNameChange}
-            >
-          </input>
-        </form>
-      </div>
-    </div>   
+    <form>
+      <PersonalDetail>Name: {name}
+        <input 
+          type="text"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <PersonalDetail>Age: {age}
+        <input 
+          type="number"
+          placeholder="Enter Age"
+          value={age}
+          onChange={handleAgeChange}
+          >
+        </input>
+      </PersonalDetail>
+
+
+
+      <PersonalDetail>Name:
+        <input 
+          type="number"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <PersonalDetail>Email Address:
+        <input 
+          type="number"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <PersonalDetail>Phone Number:
+        <input 
+          type="number"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <PersonalDetail>Location:
+        <input 
+          type="number"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <PersonalDetail>LinkedIn Profile:
+        <input 
+          type="number"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <PersonalDetail>GitHub Profile:
+        <input 
+          type="number"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <PersonalDetail>Personal Website:
+        <input 
+          type="number"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+          >
+        </input>
+      </PersonalDetail>
+      <input type="submit" value="Submit" />
+    </form>   
   );
 }
 
