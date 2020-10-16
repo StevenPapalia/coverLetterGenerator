@@ -4,6 +4,10 @@ export const Headliner = styled("h3")`
   text-align: center;
 `;
 
+export const Subheadliner = styled("h6")`
+  text-align: center;
+`;
+
 interface DroppableSectionProps {
   isDraggingOver: boolean;
 }

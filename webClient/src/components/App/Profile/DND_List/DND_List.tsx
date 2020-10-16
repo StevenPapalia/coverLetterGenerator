@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import React, { useCallback, FC } from "react";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 import { 
   Headliner,
+  Subheadliner,
   DroppableSection,
   DraggableItem,
   AddItemForm,
@@ -14,10 +15,6 @@ interface DND_Item {
   content: string;
 }
 
-const starterState: DND_Item[] = [
-  {id: "0", content: "Example Skill"},
-]
-
 // a little function to help us with reordering the result
 const reorder = (list: DND_Item[], startIndex: number, endIndex: number) => {
   const [removed] = list.splice(startIndex, 1);
@@ -27,45 +24,45 @@ const reorder = (list: DND_Item[], startIndex: number, endIndex: number) => {
 
 interface Props {
   headline: string;
-  // items: DND_Item[];
+  technicalSkills: DND_Item[];
+  addTechnicalSkill: (technicalSkill: DND_Item) => void;
+  setTechnicalSkills: (technicalSkillsList: DND_Item[]) => void;
+  technicalSkillsId: number;
 }
 
-export const DND_List: FC<Props> = ({ headline }) => {
-  const [items, setItems] = React.useState(starterState);
-  const [id, setId] = React.useState(0);
+export const DND_List: FC<Props> = ({ headline, technicalSkills, addTechnicalSkill, setTechnicalSkills, technicalSkillsId }) => {
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
-    else setItems(
+    else setTechnicalSkills(
       reorder(
-        [...items],
+        [...technicalSkills],
         source.index,
         destination.index
       )
     );
   }
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback((event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setItems([
-      ...items,
-      {
-        id: `${id + 1}`,
-        content: `${Math.random()}`,
-      }
-    ]);
-    setId(id + 1);
-  }
+    addTechnicalSkill({
+      id: `${technicalSkillsId + 1}`,
+      content: `${Math.random()}`,
+    });
+  }, [technicalSkills, technicalSkillsId])
 
   const removeItem = (index: number) => {
-    const newItems = [...items];
-    newItems.splice(index, 1)
-    setItems(newItems);
+    const newTechnicalSkills = [...technicalSkills];
+    newTechnicalSkills.splice(index, 1)
+    setTechnicalSkills(newTechnicalSkills);
   }
 
   return (
     <>
       <Headliner>{headline}</Headliner>
+      <Subheadliner>
+        Add Up To 10 Skills. Reorder By Dragging And Dropping.
+      </Subheadliner>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
@@ -74,7 +71,7 @@ export const DND_List: FC<Props> = ({ headline }) => {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {items.map((item, index) => (
+              {technicalSkills.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided, snapshot) => (
                     <DraggableItem
@@ -98,7 +95,7 @@ export const DND_List: FC<Props> = ({ headline }) => {
       </DragDropContext>
       <AddItemForm onSubmit={handleSubmit}>
         <AddItemInputField required placeholder="Add A Skill" />
-        <AddItemSubmit type="submit" value="Add Skill" />
+        <AddItemSubmit disabled={technicalSkills.length > 9} type="submit" value="Add Skill" />
       </AddItemForm>
     </>
   );
