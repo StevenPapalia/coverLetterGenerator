@@ -5,21 +5,23 @@
 ### How To Use
 1. Upload a profile picture
 2. Fill out details about your profile (Name, Email Address, Phone Number, Location, LinkedIn Profile, GitHub Profile, Personal Website)
-3. Input and rank 1 to 5 of your top "hard" skills that you want to show off in your cover letter
-4. Input and rank 1 to 5 of your top "soft" skills that you want to show off in your cover letter
-5. Input and rank 1 to 5 of the top skills asked for in the job posting
+3. Input and rank your top technical skills that you want to show off in your cover letter
+5. Input and rank the top skills asked for in the job posting
 6. Input basic information about the company that you are applying to
 7. Click a button and a cover letter will be generated for you!
 
 ### Front-End (./webClient)
-- Built with:
+- Technologies Used:
 1. TypeScript
 2. React
 3. Redux
 4. Webpack
 5. Bootstrap
 6. Styled Components
-7. Express
+7. React Router
+8. react-beautiful-dnd (Drag And Drop By Atlassian)
+9. Cleave.js (for telephone input field)
+10. Express
 
 ### Back-End
 

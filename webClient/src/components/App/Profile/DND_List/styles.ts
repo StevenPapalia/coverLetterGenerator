@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Headliner = styled("h3")`
+  text-align: center;
+`;
+
 interface DroppableSectionProps {
   isDraggingOver: boolean;
 }
@@ -48,18 +52,11 @@ export const AddItemForm = styled("form")`
   }
 `;
 
-interface AddItemInputFieldProps {
-  message: string;
-}
-
-export const AddItemInputField = styled("input")<AddItemInputFieldProps>`
+export const AddItemInputField = styled("input")`
   padding: 10px;
   margin: 10px auto auto auto;
   border: 1px solid black;
   border-radius: 5%/50%;
-  ::before {
-    content: "${({ message }) => message ?? ""}";
-  }
   &:hover {
     outline: none;
     box-shadow: 0px 0px 10px green;

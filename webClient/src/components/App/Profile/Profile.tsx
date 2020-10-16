@@ -16,9 +16,6 @@ const Profile: FC<Props> = () => {
       <ProfileSection><ProfilePersonalDetails /></ProfileSection>
       <ProfileSection><DND_List headline="Top Technical Skills" /></ProfileSection>
       <ProfileSection>
-        <div>Top Soft Skills</div>
-      </ProfileSection>
-      <ProfileSection>
         <div>top skills asked for in the job posting</div>
       </ProfileSection>
       <ProfileSection>

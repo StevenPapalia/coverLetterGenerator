@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 import { 
+  Headliner,
   DroppableSection,
   DraggableItem,
   AddItemForm,
@@ -31,8 +32,9 @@ interface Props {
 
 export const DND_List: FC<Props> = ({ headline }) => {
   const [items, setItems] = React.useState(starterState);
+  const [id, setId] = React.useState(0);
 
-  const onDragEnd = ({ source, destination }: DropResult) =>{
+  const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
     else setItems(
       reorder(
@@ -48,10 +50,11 @@ export const DND_List: FC<Props> = ({ headline }) => {
     setItems([
       ...items,
       {
-        id: `${items.length}`,
-        content: "CSS",
+        id: `${id + 1}`,
+        content: `${Math.random()}`,
       }
     ]);
+    setId(id + 1);
   }
 
   const removeItem = (index: number) => {
@@ -62,7 +65,7 @@ export const DND_List: FC<Props> = ({ headline }) => {
 
   return (
     <>
-      <div style={{textAlign: "center"}}>{headline}</div>
+      <Headliner>{headline}</Headliner>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
@@ -94,11 +97,7 @@ export const DND_List: FC<Props> = ({ headline }) => {
         </Droppable>
       </DragDropContext>
       <AddItemForm onSubmit={handleSubmit}>
-        <AddItemInputField  
-          required
-          placeholder="Add A Skill"
-          message={""}
-        />
+        <AddItemInputField required placeholder="Add A Skill" />
         <AddItemSubmit type="submit" value="Add Skill" />
       </AddItemForm>
     </>
