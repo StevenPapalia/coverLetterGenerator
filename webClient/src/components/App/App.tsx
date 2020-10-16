@@ -7,7 +7,7 @@ const Search = lazy(() => import('../Search'));
 const AddMedia = lazy(() => import('../AddMedia'));
 const Messages = lazy(() => import('../Messages'));
 const Profile = lazy(() => import('./Profile/Profile'));
-const FourZeroFour = lazy(() => import('../FourZeroFour'));
+const PageNotFound = lazy(() => import('../PageNotFound'));
 
 interface Props {
 
@@ -50,7 +50,7 @@ export const App: FC<Props> = () => {
             </Route>
             <Route>
               <Suspense fallback={<div>Loading...</div>}>
-                <FourZeroFour />
+                <PageNotFound />
               </Suspense>
             </Route>
           </Switch>
