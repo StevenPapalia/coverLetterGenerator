@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultProfilePicture, removeImage } from "../../../../paths"
+import { defaultProfilePicture, deleteIcon } from "../../../../paths"
 
 export const ImageContainer = styled("form")`
   width: 222px;
@@ -71,7 +71,7 @@ export const RemoveImage = styled("input")`
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(${ removeImage });
+  background-image: url(${ deleteIcon });
   cursor: pointer;
   &:hover {
     outline: none;

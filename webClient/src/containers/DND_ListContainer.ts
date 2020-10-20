@@ -2,12 +2,9 @@ import { DND_List as Component } from "../components/App/Profile/DND_List/DND_Li
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Dispatch } from 'react';
-import { IAction, AddTechnicalSkill, SetTechnicalSkills } from '../actions/DND_ListActions';
+import { IAction, DND_Item, AddTechnicalSkill, SetTechnicalSkills } from '../actions/DND_ListActions';
 import { IStoreState } from '../store';
-interface DND_Item {
-  id: string;
-  content: string;
-}
+
 const mapStateToProps = (state: IStoreState) => {
   return {
     technicalSkills: state.profileDndList.technicalSkills,

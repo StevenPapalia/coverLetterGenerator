@@ -1,10 +1,5 @@
 import { DND_ListEvents } from "../events/DND_ListEvents";
-import { IAction } from "../actions/DND_ListActions";
-
-interface DND_Item {
-  id: string;
-  content: string;
-}
+import { IAction, DND_Item } from "../actions/DND_ListActions";
 
 export interface IState {
   technicalSkills: DND_Item[];
@@ -12,7 +7,7 @@ export interface IState {
 }
 
 const initState: IState = { 
-  technicalSkills: [{id: "0", content: "Example Skill"}],
+  technicalSkills: [{id: "0", content: "JavaScript"}],
   technicalSkillsId: 0,
 }
 

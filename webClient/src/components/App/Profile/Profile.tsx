@@ -14,7 +14,12 @@ const Profile: FC<Props> = () => {
       <Jumbo message="Your Profile" />
       <ProfileSection><ProfilePicture /></ProfileSection>
       <ProfileSection><ProfilePersonalDetails /></ProfileSection>
-      <ProfileSection><TechnicalSkills headline="Top Technical Skills" /></ProfileSection>
+      <ProfileSection>
+        <TechnicalSkills 
+          headline="Top Technical Skills" 
+          subheadline="Add Up To 10 Skills. Reorder By Dragging And Dropping."
+        />
+      </ProfileSection>
       <ProfileSection>
         <div>top skills asked for in the job posting</div>
       </ProfileSection>

@@ -1,21 +1,18 @@
-import React, { useCallback, FC } from "react";
+import React, { useCallback, ChangeEvent, FC, MouseEvent } from "react";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
+import { DND_Item } from '../../../../actions/DND_ListActions';
 import { 
   Headliner,
   Subheadliner,
   DroppableSection,
   DraggableItem,
+  DraggableContent,
+  DeleteSkill,
   AddItemForm,
   AddItemInputField,
   AddItemSubmit,
 } from './styles';
 
-interface DND_Item {
-  id: string;
-  content: string;
-}
-
-// a little function to help us with reordering the result
 const reorder = (list: DND_Item[], startIndex: number, endIndex: number) => {
   const [removed] = list.splice(startIndex, 1);
   list.splice(endIndex, 0, removed);
@@ -24,13 +21,15 @@ const reorder = (list: DND_Item[], startIndex: number, endIndex: number) => {
 
 interface Props {
   headline: string;
+  subheadline: string;
   technicalSkills: DND_Item[];
+  technicalSkillsId: number;
   addTechnicalSkill: (technicalSkill: DND_Item) => void;
   setTechnicalSkills: (technicalSkillsList: DND_Item[]) => void;
-  technicalSkillsId: number;
 }
 
-export const DND_List: FC<Props> = ({ headline, technicalSkills, addTechnicalSkill, setTechnicalSkills, technicalSkillsId }) => {
+export const DND_List: FC<Props> = ({ headline, subheadline, technicalSkills, addTechnicalSkill, setTechnicalSkills, technicalSkillsId }) => {
+  const [newSkill, setNewSkill] = React.useState("");
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
@@ -43,59 +42,74 @@ export const DND_List: FC<Props> = ({ headline, technicalSkills, addTechnicalSki
     );
   }
 
-  const handleSubmit = useCallback((event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback((event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     addTechnicalSkill({
       id: `${technicalSkillsId + 1}`,
-      content: `${Math.random()}`,
+      content: newSkill,
     });
-  }, [technicalSkills, technicalSkillsId])
+  }, [technicalSkills, technicalSkillsId, newSkill]);
 
-  const removeItem = (index: number) => {
+  const removeItem = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const ItemIndex = parseInt(event.currentTarget.name);
     const newTechnicalSkills = [...technicalSkills];
-    newTechnicalSkills.splice(index, 1)
+    newTechnicalSkills.splice(ItemIndex, 1)
     setTechnicalSkills(newTechnicalSkills);
-  }
+  }, [technicalSkills, setTechnicalSkills])
+
+  const handleNewSkillChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setNewSkill(event.target.value);
+  }, [newSkill]);
 
   return (
     <>
       <Headliner>{headline}</Headliner>
-      <Subheadliner>
-        Add Up To 10 Skills. Reorder By Dragging And Dropping.
-      </Subheadliner>
+      <Subheadliner>{subheadline}</Subheadliner>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
-          {(provided, snapshot) => (
+          {({ innerRef, droppableProps, placeholder }, { isDraggingOver }) => (
             <DroppableSection
-              isDraggingOver={snapshot.isDraggingOver}
-              {...provided.droppableProps}
-              ref={provided.innerRef}
+              isDraggingOver={isDraggingOver}
+              {...droppableProps}
+              ref={innerRef}
             >
-              {technicalSkills.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
+              {technicalSkills.map(({ id, content }, index) => (
+                <Draggable key={id} draggableId={id} index={index}>
+                  {({ innerRef, draggableProps, dragHandleProps }, { isDragging }) => (
                     <DraggableItem
-                      isDragging={snapshot.isDragging}
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
+                      isDragging={isDragging}
+                      ref={innerRef}
+                      {...draggableProps}
+                      {...dragHandleProps}
                     >
-                      {item.content}
-                      <button type="button" onClick={() => removeItem(index)}>
-                        delete
-                      </button>
+                      <DraggableContent>{content}</DraggableContent>
+                      <DeleteSkill 
+                        name={`${index}`} 
+                        type="button" 
+                        onClick={removeItem}
+                      />
                     </DraggableItem>
                   )}
                 </Draggable>
               ))}
-              {provided.placeholder}
+              {placeholder}
             </DroppableSection>
           )}
         </Droppable>
       </DragDropContext>
       <AddItemForm onSubmit={handleSubmit}>
-        <AddItemInputField required placeholder="Add A Skill" />
-        <AddItemSubmit disabled={technicalSkills.length > 9} type="submit" value="Add Skill" />
+        <AddItemInputField 
+          value={newSkill} 
+          onChange={handleNewSkillChange}
+          required 
+          maxLength={20}
+          placeholder="Add A Skill"
+        />
+        <AddItemSubmit 
+          disabled={technicalSkills.length > 9}
+          type="submit" 
+          value="Add Skill"
+        />
       </AddItemForm>
     </>
   );
