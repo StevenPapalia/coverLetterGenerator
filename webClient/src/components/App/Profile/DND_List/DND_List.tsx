@@ -1,6 +1,6 @@
-import React, { useCallback, ChangeEvent, FC, MouseEvent } from 'react';
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import { DND_Item } from '../../../../actions/DND_ListActions';
+import React, { useCallback, ChangeEvent, FC, MouseEvent } from 'react'
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd'
+import { DND_Item } from '../../../../actions/DND_ListActions'
 import {
   Headliner,
   Subheadliner,
@@ -11,21 +11,21 @@ import {
   AddItemForm,
   AddItemInputField,
   AddItemSubmit,
-} from './styles';
+} from './styles'
 
 const reorder = (list: DND_Item[], startIndex: number, endIndex: number) => {
-  const [removed] = list.splice(startIndex, 1);
-  list.splice(endIndex, 0, removed);
-  return list;
-};
+  const [removed] = list.splice(startIndex, 1)
+  list.splice(endIndex, 0, removed)
+  return list
+}
 
 interface Props {
-  headline: string;
-  subheadline: string;
-  technicalSkills: DND_Item[];
-  technicalSkillsId: number;
-  addTechnicalSkill: (technicalSkill: DND_Item) => void;
-  setTechnicalSkills: (technicalSkillsList: DND_Item[]) => void;
+  headline: string
+  subheadline: string
+  technicalSkills: DND_Item[]
+  technicalSkillsId: number
+  addTechnicalSkill: (technicalSkill: DND_Item) => void
+  setTechnicalSkills: (technicalSkillsList: DND_Item[]) => void
 }
 
 export const DND_List: FC<Props> = ({
@@ -36,40 +36,40 @@ export const DND_List: FC<Props> = ({
   setTechnicalSkills,
   technicalSkillsId,
 }) => {
-  const [newSkill, setNewSkill] = React.useState('');
+  const [newItem, setNewItem] = React.useState('')
 
   const onDragEnd = ({ source, destination }: DropResult) => {
-    if (!destination) return;
-    else setTechnicalSkills(reorder([...technicalSkills], source.index, destination.index));
-  };
+    if (!destination) return
+    else setTechnicalSkills(reorder([...technicalSkills], source.index, destination.index))
+  }
 
   const handleSubmit = useCallback(
     (event: ChangeEvent<HTMLFormElement>) => {
-      event.preventDefault();
+      event.preventDefault()
       addTechnicalSkill({
         id: `${technicalSkillsId + 1}`,
-        content: newSkill,
-      });
+        content: newItem,
+      })
     },
-    [technicalSkills, technicalSkillsId, newSkill],
-  );
+    [technicalSkills, technicalSkillsId, newItem],
+  )
 
   const removeItem = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
-      const ItemIndex = parseInt(event.currentTarget.name);
-      const newTechnicalSkills = [...technicalSkills];
-      newTechnicalSkills.splice(ItemIndex, 1);
-      setTechnicalSkills(newTechnicalSkills);
+      const itemIndex = parseInt(event.currentTarget.name)
+      const newTechnicalSkills = [...technicalSkills]
+      newTechnicalSkills.splice(itemIndex, 1)
+      setTechnicalSkills(newTechnicalSkills)
     },
     [technicalSkills, setTechnicalSkills],
-  );
+  )
 
-  const handleNewSkillChange = useCallback(
+  const handleNewItemChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      setNewSkill(event.target.value);
+      setNewItem(event.target.value)
     },
-    [newSkill],
-  );
+    [newItem],
+  )
 
   return (
     <>
@@ -86,7 +86,8 @@ export const DND_List: FC<Props> = ({
                       isDragging={isDragging}
                       ref={innerRef}
                       {...draggableProps}
-                      {...dragHandleProps}>
+                      {...dragHandleProps}
+                    >
                       <DraggableContent>{content}</DraggableContent>
                       <DeleteSkill name={`${index}`} type='button' onClick={removeItem} />
                     </DraggableItem>
@@ -100,8 +101,8 @@ export const DND_List: FC<Props> = ({
       </DragDropContext>
       <AddItemForm onSubmit={handleSubmit}>
         <AddItemInputField
-          value={newSkill}
-          onChange={handleNewSkillChange}
+          value={newItem}
+          onChange={handleNewItemChange}
           required
           maxLength={20}
           placeholder='Add A Skill'
@@ -109,5 +110,5 @@ export const DND_List: FC<Props> = ({
         <AddItemSubmit disabled={technicalSkills.length > 9} type='submit' value='Add Skill' />
       </AddItemForm>
     </>
-  );
-};
+  )
+}

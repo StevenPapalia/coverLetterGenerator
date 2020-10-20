@@ -1,13 +1,13 @@
-import { ProfilePictureEvents } from "../events/ProfilePictureEvents";
-import { IAction } from "../actions/ProfilePictureActions";
+import { ProfilePictureEvents } from '../events/ProfilePictureEvents'
+import { IAction } from '../actions/ProfilePictureActions'
 
 export interface IState {
-  imgUrl: string;
+  imgUrl: string
 }
 
 const initState: IState = {
-  imgUrl: "",
-};
+  imgUrl: '',
+}
 
 export const reducer = (state: IState = initState, action: IAction): IState => {
   switch (action.type) {
@@ -15,8 +15,8 @@ export const reducer = (state: IState = initState, action: IAction): IState => {
       return {
         ...state,
         imgUrl: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

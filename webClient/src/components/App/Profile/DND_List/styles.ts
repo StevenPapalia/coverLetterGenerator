@@ -1,42 +1,39 @@
-import styled from "styled-components";
-import { deleteIcon } from "../../../../paths";
+import styled from 'styled-components'
+import { deleteIcon } from '../../../../paths'
 
-export const Headliner = styled("h3")`
+export const Headliner = styled('h3')`
   text-align: center;
-`;
+`
 
-export const Subheadliner = styled("h6")`
+export const Subheadliner = styled('h6')`
   text-align: center;
-`;
+`
 
 interface DroppableSectionProps {
-  isDraggingOver: boolean;
+  isDraggingOver: boolean
 }
 
-export const DroppableSection = styled("div")<DroppableSectionProps>`
-  background: ${({ isDraggingOver }) =>
-    isDraggingOver ? "lightblue" : "lightgrey"};
+export const DroppableSection = styled('div')<DroppableSectionProps>`
+  background: ${({ isDraggingOver }) => (isDraggingOver ? 'lightblue' : 'lightgrey')};
   padding: 5px;
   width: 250px;
   margin: auto;
   border: 0.5px solid #007bff;
   border-radius: 5%;
-`;
+`
 
 interface DraggableItemProps {
-  isDragging: boolean;
+  isDragging: boolean
 }
 
-export const DraggableItem = styled("div")<DraggableItemProps>`
+export const DraggableItem = styled('div')<DraggableItemProps>`
   user-select: none;
   padding: 10px;
   margin: 8px 5px 8px 5px;
   border: 1px solid black;
   border-radius: 5%/50%;
-  background: ${({ isDragging }) =>
-    isDragging ? "#6c957d" : "blanchedalmond"};
-  box-shadow: ${({ isDragging }) =>
-    isDragging ? "0px 0px 10px green" : "none"};
+  background: ${({ isDragging }) => (isDragging ? '#6c957d' : 'blanchedalmond')};
+  box-shadow: ${({ isDragging }) => (isDragging ? '0px 0px 10px green' : 'none')};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,15 +44,15 @@ export const DraggableItem = styled("div")<DraggableItemProps>`
   &:focus {
     outline: none;
   }
-`;
+`
 
-export const DraggableContent = styled("div")`
+export const DraggableContent = styled('div')`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-`;
+`
 
-export const DeleteSkill = styled("button")`
+export const DeleteSkill = styled('button')`
   width: 12px;
   height: 12px;
   top: 10px;
@@ -73,9 +70,9 @@ export const DeleteSkill = styled("button")`
   &:focus {
     outline: none;
   }
-`;
+`
 
-export const AddItemForm = styled("form")`
+export const AddItemForm = styled('form')`
   display: block;
   margin: 10px auto auto auto;
   width: 250px;
@@ -85,9 +82,9 @@ export const AddItemForm = styled("form")`
   &:focus {
     outline: none;
   }
-`;
+`
 
-export const AddItemInputField = styled("input")`
+export const AddItemInputField = styled('input')`
   padding: 10px;
   margin: 10px auto auto auto;
   border: 1px solid black;
@@ -99,9 +96,9 @@ export const AddItemInputField = styled("input")`
   &:focus {
     outline: none;
   }
-`;
+`
 
-export const AddItemSubmit = styled("input")`
+export const AddItemSubmit = styled('input')`
   padding: 10px;
   margin: 10px auto 10px auto;
   border: 1px solid black;
@@ -113,4 +110,4 @@ export const AddItemSubmit = styled("input")`
   &:focus {
     outline: none;
   }
-`;
+`

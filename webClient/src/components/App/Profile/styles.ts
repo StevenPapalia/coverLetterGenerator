@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const ProfileSection = styled("div")`
+export const ProfileSection = styled('div')`
   width: 80%;
   border-radius: 25px;
   margin-left: auto;
@@ -13,4 +13,4 @@ export const ProfileSection = styled("div")`
   &:focus {
     outline: none;
   }
-`;
+`

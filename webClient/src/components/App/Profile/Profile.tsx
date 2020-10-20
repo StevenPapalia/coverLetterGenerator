@@ -1,16 +1,16 @@
-import React, { FC } from "react";
-import { ProfileSection } from "./styles";
-import { Jumbo } from "../styles";
-import { ProfilePicture } from "../../../containers/ProfilePictureContainer";
-import { ProfilePersonalDetails } from "../../../containers/ProfilePersonalDetailsContainer";
-import { DND_List as TechnicalSkills } from "../../../containers/DND_ListContainer";
+import React, { FC } from 'react'
+import { ProfileSection } from './styles'
+import { Jumbo } from '../styles'
+import { ProfilePicture } from '../../../containers/ProfilePictureContainer'
+import { ProfilePersonalDetails } from '../../../containers/ProfilePersonalDetailsContainer'
+import { DND_List as TechnicalSkills } from '../../../containers/DND_ListContainer'
 
 interface Props {}
 
 const Profile: FC<Props> = () => {
   return (
     <>
-      <Jumbo message="Your Profile" />
+      <Jumbo message='Your Profile' />
       <ProfileSection>
         <ProfilePicture />
       </ProfileSection>
@@ -19,8 +19,8 @@ const Profile: FC<Props> = () => {
       </ProfileSection>
       <ProfileSection>
         <TechnicalSkills
-          headline="Top Technical Skills"
-          subheadline="Add Up To 10 Skills. Reorder By Dragging And Dropping."
+          headline='Top Technical Skills'
+          subheadline='Add Up To 10 Skills. Reorder By Dragging And Dropping.'
         />
       </ProfileSection>
       <ProfileSection>
@@ -31,7 +31,7 @@ const Profile: FC<Props> = () => {
       </ProfileSection>
       {/* // make submit */}
     </>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

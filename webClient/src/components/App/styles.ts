@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { Jumbotron } from "react-bootstrap";
+import styled from 'styled-components'
+import { Jumbotron } from 'react-bootstrap'
 
-export const AppWrapper = styled("div")`
+export const AppWrapper = styled('div')`
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -11,9 +11,9 @@ export const AppWrapper = styled("div")`
   @media (min-width: 900px) {
     width: 900px;
   }
-`;
+`
 
-export const MainContentSection = styled("div")`
+export const MainContentSection = styled('div')`
   min-height: 1000px;
   background-color: aliceblue;
   border-left: 0.5px solid #007bff;
@@ -25,17 +25,17 @@ export const MainContentSection = styled("div")`
   @media (min-width: 900px) {
     width: 900px;
   }
-`;
+`
 
 interface JumboProps {
-  message: string;
+  message: string
 }
 
 export const Jumbo = styled(Jumbotron)<JumboProps>`
   background-color: blanchedalmond;
   border-radius: 0px;
   ::before {
-    content: "${({ message }) => message ?? ""}";
+    content: '${({ message }) => message ?? ''}';
     width: 150px;
     position: absolute;
     left: 50%;
@@ -48,4 +48,4 @@ export const Jumbo = styled(Jumbotron)<JumboProps>`
     letter-spacing: 2.5px;
     text-align: center;
   }
-`;
+`

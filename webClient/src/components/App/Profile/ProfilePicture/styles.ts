@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { defaultProfilePicture, deleteIcon } from "../../../../paths";
+import styled from 'styled-components'
+import { defaultProfilePicture, deleteIcon } from '../../../../paths'
 
-export const ImageContainer = styled("form")`
+export const ImageContainer = styled('form')`
   width: 222px;
   border-radius: 25px;
   background-color: blanchedalmond;
@@ -14,27 +14,26 @@ export const ImageContainer = styled("form")`
   &:focus {
     outline: none;
   }
-`;
+`
 
 interface UploadImageProps {
-  imgUrl: string;
-  message: string;
+  imgUrl: string
+  message: string
 }
 
-export const UploadImage = styled("input")<UploadImageProps>`
+export const UploadImage = styled('input')<UploadImageProps>`
   margin: 10px;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: #f0f0f0;
-  background-image: url(${({ imgUrl }) =>
-    imgUrl ? imgUrl : defaultProfilePicture});
+  background-image: url(${({ imgUrl }) => (imgUrl ? imgUrl : defaultProfilePicture)});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   color: transparent;
   ::before {
-    content: "${({ imgUrl, message }) => (imgUrl ? "" : message)}";
+    content: '${({ imgUrl, message }) => (imgUrl ? '' : message)}';
     width: 150px;
     position: absolute;
     top: 50%;
@@ -60,9 +59,9 @@ export const UploadImage = styled("input")<UploadImageProps>`
   &:focus {
     outline: none;
   }
-`;
+`
 
-export const RemoveImage = styled("input")`
+export const RemoveImage = styled('input')`
   width: 24px;
   height: 24px;
   position: absolute;
@@ -81,4 +80,4 @@ export const RemoveImage = styled("input")`
   &:focus {
     outline: none;
   }
-`;
+`

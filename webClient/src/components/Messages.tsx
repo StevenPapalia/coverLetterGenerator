@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 interface Props {}
 
@@ -7,7 +7,7 @@ const Messages: React.FC<Props> = () => {
     <div>
       <h1>Messages Page</h1>
     </div>
-  );
-};
+  )
+}
 
-export default Messages;
+export default Messages

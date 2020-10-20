@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 interface Props {}
 
@@ -7,7 +7,7 @@ const Search: React.FC<Props> = () => {
     <div>
       <h1>Search Page</h1>
     </div>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search

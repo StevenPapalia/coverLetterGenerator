@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 interface Props {}
 
@@ -12,7 +12,7 @@ const FourZeroFour: React.FC<Props> = () => {
         <Link to={'/'}>Click Here To Return The Home Page</Link>
       </h1>
     </div>
-  );
-};
+  )
+}
 
-export default FourZeroFour;
+export default FourZeroFour

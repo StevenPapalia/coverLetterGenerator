@@ -1,46 +1,34 @@
-import React, { useCallback, FC, ChangeEvent, memo } from "react";
-import { PersonalDetail } from "./styles";
-import Cleave from "cleave.js/react";
-import "cleave.js/dist/addons/cleave-phone.US";
-
-type ProfilePersonalDetails = {
-  name: string;
-  email: string;
-  phone: string;
-  location: string;
-  linkedIn: string;
-  github: string;
-  website: string;
-};
+import React, { useCallback, FC, ChangeEvent, memo } from 'react'
+import { PersonalDetail } from './styles'
+import { ProfilePersonalDetails } from '../../../../actions/ProfilePersonalDetailsActions'
+import Cleave from 'cleave.js/react'
+import 'cleave.js/dist/addons/cleave-phone.US'
 
 interface Props {
-  personalDetails: ProfilePersonalDetails;
-  setPersonalDetails(personalDetails: ProfilePersonalDetails): void;
+  personalDetails: ProfilePersonalDetails
+  setPersonalDetails(personalDetails: ProfilePersonalDetails): void
 }
 
-const ProfilePersonalDetails: FC<Props> = ({
-  personalDetails,
-  setPersonalDetails,
-}) => {
+const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails }) => {
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      event.preventDefault();
+      event.preventDefault()
       setPersonalDetails({
         ...personalDetails,
         [event.target.name]: event.target.value,
-      });
+      })
     },
-    [personalDetails]
-  );
+    [personalDetails],
+  )
 
   return (
     <form>
       <PersonalDetail>
         Name:
         <input
-          type="text"
-          placeholder="Enter Name"
-          name="name"
+          type='text'
+          placeholder='Enter Name'
+          name='name'
           value={personalDetails.name}
           onChange={handleChange}
         />
@@ -48,9 +36,9 @@ const ProfilePersonalDetails: FC<Props> = ({
       <PersonalDetail>
         Email Address:
         <input
-          type="email"
-          placeholder="Enter Email"
-          name="email"
+          type='email'
+          placeholder='Enter Email'
+          name='email'
           value={personalDetails.email}
           onChange={handleChange}
         />
@@ -58,10 +46,10 @@ const ProfilePersonalDetails: FC<Props> = ({
       <PersonalDetail>
         Phone Number:
         <Cleave
-          options={{ phone: true, phoneRegionCode: "US" }}
-          type="text"
-          placeholder="Enter Phone"
-          name="phone"
+          options={{ phone: true, phoneRegionCode: 'US' }}
+          type='text'
+          placeholder='Enter Phone'
+          name='phone'
           value={personalDetails.phone}
           onChange={handleChange}
         />
@@ -69,9 +57,9 @@ const ProfilePersonalDetails: FC<Props> = ({
       <PersonalDetail>
         Location:
         <input
-          type="text"
-          placeholder="Enter Location"
-          name="location"
+          type='text'
+          placeholder='Enter Location'
+          name='location'
           value={personalDetails.location}
           onChange={handleChange}
         />
@@ -79,9 +67,9 @@ const ProfilePersonalDetails: FC<Props> = ({
       <PersonalDetail>
         LinkedIn Profile:
         <input
-          type="text"
-          placeholder="Enter LinkedIn Profile URL"
-          name="linkedIn"
+          type='text'
+          placeholder='Enter LinkedIn Profile URL'
+          name='linkedIn'
           value={personalDetails.linkedIn}
           onChange={handleChange}
         />
@@ -89,9 +77,9 @@ const ProfilePersonalDetails: FC<Props> = ({
       <PersonalDetail>
         Github Profile:
         <input
-          type="text"
-          placeholder="Enter Github Profile URL"
-          name="github"
+          type='text'
+          placeholder='Enter Github Profile URL'
+          name='github'
           value={personalDetails.github}
           onChange={handleChange}
         />
@@ -99,15 +87,15 @@ const ProfilePersonalDetails: FC<Props> = ({
       <PersonalDetail>
         Personal Website:
         <input
-          type="text"
-          placeholder="Enter Personal Website URL"
-          name="website"
+          type='text'
+          placeholder='Enter Personal Website URL'
+          name='website'
           value={personalDetails.website}
           onChange={handleChange}
         />
       </PersonalDetail>
     </form>
-  );
-};
+  )
+}
 
-export const ProfilePersonalDetailsMemo = memo(ProfilePersonalDetails);
+export const ProfilePersonalDetailsMemo = memo(ProfilePersonalDetails)

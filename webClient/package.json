@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -d",
     "start-dev": "npm run build & nodemon",
-    "prettier": "prettier 'src/**/*.{ts,js,css,html}' --write"
+    "prettier": "prettier --print-width 100 --no-semi --single-quote --jsx-single-quote --trailing-comma all --write 'src/**/*.{ts,tsx,js,css,html}'"
   },
   "author": "Steven Papalia",
   "license": "ISC",
