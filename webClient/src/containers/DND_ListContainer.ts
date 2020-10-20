@@ -1,9 +1,14 @@
-import { DND_List as Component } from "../components/App/Profile/DND_List/DND_List"
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { Dispatch } from 'react';
-import { IAction, DND_Item, AddTechnicalSkill, SetTechnicalSkills } from '../actions/DND_ListActions';
-import { IStoreState } from '../store';
+import { DND_List as Component } from "../components/App/Profile/DND_List/DND_List";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { Dispatch } from "react";
+import {
+  IAction,
+  DND_Item,
+  AddTechnicalSkill,
+  SetTechnicalSkills,
+} from "../actions/DND_ListActions";
+import { IStoreState } from "../store";
 
 const mapStateToProps = (state: IStoreState) => {
   return {
@@ -20,13 +25,9 @@ const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
     setTechnicalSkills: (technicalSkillsList: DND_Item[]) => {
       dispatch(SetTechnicalSkills(technicalSkillsList));
     },
-
   };
 };
 
-export const DND_List = compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
-)(Component);
+export const DND_List = compose(connect(mapStateToProps, mapDispatchToProps))(
+  Component
+);

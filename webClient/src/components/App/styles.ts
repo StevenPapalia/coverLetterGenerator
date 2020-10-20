@@ -4,7 +4,7 @@ import { Jumbotron } from "react-bootstrap";
 export const AppWrapper = styled("div")`
   width: 100%;
   margin-right: auto;
-  margin-left: auto;  
+  margin-left: auto;
   @media (min-width: 700px) {
     width: 700px;
   }
@@ -29,7 +29,7 @@ export const MainContentSection = styled("div")`
 
 interface JumboProps {
   message: string;
-};
+}
 
 export const Jumbo = styled(Jumbotron)<JumboProps>`
   background-color: blanchedalmond;

@@ -1,17 +1,20 @@
-import React, { lazy, Suspense, FC } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { AppWrapper, MainContentSection } from './styles';
-import { TopNavBar } from '../../containers/TopNavBarContainer';
-const Home = lazy(() => import('../Home'));
-const Search = lazy(() => import('../Search'));
-const AddMedia = lazy(() => import('../AddMedia'));
-const Messages = lazy(() => import('../Messages'));
-const Profile = lazy(() => import('./Profile/Profile'));
-const PageNotFound = lazy(() => import('../PageNotFound'));
+import React, { lazy, Suspense, FC } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import { AppWrapper, MainContentSection } from "./styles";
+import { TopNavBar } from "../../containers/TopNavBarContainer";
+const Home = lazy(() => import("../Home"));
+const Search = lazy(() => import("../Search"));
+const AddMedia = lazy(() => import("../AddMedia"));
+const Messages = lazy(() => import("../Messages"));
+const Profile = lazy(() => import("./Profile/Profile"));
+const PageNotFound = lazy(() => import("../PageNotFound"));
 
-interface Props {
-
-}
+interface Props {}
 
 export const App: FC<Props> = () => {
   return (
@@ -20,7 +23,7 @@ export const App: FC<Props> = () => {
       <MainContentSection>
         <Router>
           <Switch>
-            <Route exact path="/" >
+            <Route exact path="/">
               <Redirect to="/home" />
             </Route>
             <Route path="/home">
@@ -58,4 +61,4 @@ export const App: FC<Props> = () => {
       </MainContentSection>
     </AppWrapper>
   );
-}
+};

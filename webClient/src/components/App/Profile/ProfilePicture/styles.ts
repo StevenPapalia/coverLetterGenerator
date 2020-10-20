@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultProfilePicture, deleteIcon } from "../../../../paths"
+import { defaultProfilePicture, deleteIcon } from "../../../../paths";
 
 export const ImageContainer = styled("form")`
   width: 222px;
@@ -19,7 +19,7 @@ export const ImageContainer = styled("form")`
 interface UploadImageProps {
   imgUrl: string;
   message: string;
-};
+}
 
 export const UploadImage = styled("input")<UploadImageProps>`
   margin: 10px;
@@ -27,13 +27,14 @@ export const UploadImage = styled("input")<UploadImageProps>`
   height: 200px;
   border-radius: 50%;
   background-color: #f0f0f0;
-  background-image: url(${({ imgUrl }) => imgUrl ? imgUrl : defaultProfilePicture });
+  background-image: url(${({ imgUrl }) =>
+    imgUrl ? imgUrl : defaultProfilePicture});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   color: transparent;
   ::before {
-    content: "${({ imgUrl, message }) => imgUrl ? "" : message }";
+    content: "${({ imgUrl, message }) => (imgUrl ? "" : message)}";
     width: 150px;
     position: absolute;
     top: 50%;
@@ -71,7 +72,7 @@ export const RemoveImage = styled("input")`
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(${ deleteIcon });
+  background-image: url(${deleteIcon});
   cursor: pointer;
   &:hover {
     outline: none;

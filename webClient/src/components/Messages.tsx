@@ -1,8 +1,6 @@
-import React from 'react';
+import React from "react";
 
-interface Props {
-
-}
+interface Props {}
 
 const Messages: React.FC<Props> = () => {
   return (
@@ -10,6 +8,6 @@ const Messages: React.FC<Props> = () => {
       <h1>Messages Page</h1>
     </div>
   );
-}
+};
 
 export default Messages;

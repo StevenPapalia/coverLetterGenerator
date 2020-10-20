@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface Props {
-
-}
+interface Props {}
 
 const FourZeroFour: React.FC<Props> = () => {
   return (
@@ -11,10 +9,10 @@ const FourZeroFour: React.FC<Props> = () => {
       <h1>The Page You Are Looking For Does Not Exist.</h1>
       <h1>Please Verify That The URL You Typed In Has No Typos</h1>
       <h1>
-        <Link to={"/"} >Click Here To Return To coverLetterGenerator's Home Page</Link>
+        <Link to={'/'}>Click Here To Return The Home Page</Link>
       </h1>
     </div>
   );
-}
+};
 
 export default FourZeroFour;

@@ -1,8 +1,6 @@
-import React from 'react';
+import React from "react";
 
-interface Props {
-
-}
+interface Props {}
 
 const AddMedia: React.FC<Props> = () => {
   return (
@@ -10,6 +8,6 @@ const AddMedia: React.FC<Props> = () => {
       <h1>AddMedia Page</h1>
     </div>
   );
-}
+};
 
 export default AddMedia;

@@ -6,22 +6,30 @@ export interface IState {
   technicalSkillsId: number;
 }
 
-const initState: IState = { 
-  technicalSkills: [{id: "0", content: "JavaScript"}],
+const initState: IState = {
+  technicalSkills: [
+    {
+      id: "0",
+      content: "JavaScript",
+    },
+  ],
   technicalSkillsId: 0,
-}
+};
 
 export const reducer = (state: IState = initState, action: IAction): IState => {
-  switch(action.type) {
+  switch (action.type) {
     case DND_ListEvents.ADD_TECHNICAL_SKILL:
-      return { 
+      return {
         ...state,
         technicalSkills: [...state.technicalSkills, action.payload],
         technicalSkillsId: state.technicalSkillsId + 1,
       };
     case DND_ListEvents.SET_TECHNICAL_SKILLS:
-      return { ...state, technicalSkills: action.payload };
-    default: 
+      return {
+        ...state,
+        technicalSkills: action.payload,
+      };
+    default:
       return state;
   }
-}
+};

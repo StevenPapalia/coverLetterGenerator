@@ -1,8 +1,6 @@
-import React from 'react';
+import React from "react";
 
-interface Props {
-
-}
+interface Props {}
 
 const Search: React.FC<Props> = () => {
   return (
@@ -10,6 +8,6 @@ const Search: React.FC<Props> = () => {
       <h1>Search Page</h1>
     </div>
   );
-}
+};
 
 export default Search;

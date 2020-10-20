@@ -1,6 +1,6 @@
 import React, { useCallback, FC, ChangeEvent, memo } from "react";
-import { PersonalDetail } from './styles';
-import Cleave from 'cleave.js/react';
+import { PersonalDetail } from "./styles";
+import Cleave from "cleave.js/react";
 import "cleave.js/dist/addons/cleave-phone.US";
 
 type ProfilePersonalDetails = {
@@ -18,17 +18,26 @@ interface Props {
   setPersonalDetails(personalDetails: ProfilePersonalDetails): void;
 }
 
-const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails }) => {
-
-  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    setPersonalDetails({ ...personalDetails, [event.target.name]: event.target.value });
-  }, [personalDetails]);
+const ProfilePersonalDetails: FC<Props> = ({
+  personalDetails,
+  setPersonalDetails,
+}) => {
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault();
+      setPersonalDetails({
+        ...personalDetails,
+        [event.target.name]: event.target.value,
+      });
+    },
+    [personalDetails]
+  );
 
   return (
     <form>
-      <PersonalDetail>Name:
-        <input 
+      <PersonalDetail>
+        Name:
+        <input
           type="text"
           placeholder="Enter Name"
           name="name"
@@ -36,18 +45,20 @@ const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails
           onChange={handleChange}
         />
       </PersonalDetail>
-      <PersonalDetail>Email Address:
-        <input 
-          type="email" 
+      <PersonalDetail>
+        Email Address:
+        <input
+          type="email"
           placeholder="Enter Email"
           name="email"
           value={personalDetails.email}
           onChange={handleChange}
         />
       </PersonalDetail>
-      <PersonalDetail>Phone Number:
+      <PersonalDetail>
+        Phone Number:
         <Cleave
-          options={{phone: true, phoneRegionCode: "US"}}
+          options={{ phone: true, phoneRegionCode: "US" }}
           type="text"
           placeholder="Enter Phone"
           name="phone"
@@ -55,44 +66,48 @@ const ProfilePersonalDetails: FC<Props> = ({ personalDetails, setPersonalDetails
           onChange={handleChange}
         />
       </PersonalDetail>
-      <PersonalDetail>Location:
-        <input 
+      <PersonalDetail>
+        Location:
+        <input
           type="text"
           placeholder="Enter Location"
           name="location"
           value={personalDetails.location}
           onChange={handleChange}
-          />
+        />
       </PersonalDetail>
-      <PersonalDetail>LinkedIn Profile:
-        <input 
+      <PersonalDetail>
+        LinkedIn Profile:
+        <input
           type="text"
           placeholder="Enter LinkedIn Profile URL"
           name="linkedIn"
           value={personalDetails.linkedIn}
           onChange={handleChange}
-          />
+        />
       </PersonalDetail>
-      <PersonalDetail>Github Profile:
-        <input 
+      <PersonalDetail>
+        Github Profile:
+        <input
           type="text"
           placeholder="Enter Github Profile URL"
           name="github"
           value={personalDetails.github}
           onChange={handleChange}
-          />
+        />
       </PersonalDetail>
-      <PersonalDetail>Personal Website:
-        <input 
+      <PersonalDetail>
+        Personal Website:
+        <input
           type="text"
           placeholder="Enter Personal Website URL"
           name="website"
           value={personalDetails.website}
           onChange={handleChange}
-          />
+        />
       </PersonalDetail>
-    </form>   
+    </form>
   );
-}
+};
 
 export const ProfilePersonalDetailsMemo = memo(ProfilePersonalDetails);

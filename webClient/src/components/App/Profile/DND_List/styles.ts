@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-import { Draggable } from 'react-beautiful-dnd';
-import { deleteIcon } from "../../../../paths"
+import styled from "styled-components";
+import { deleteIcon } from "../../../../paths";
 
 export const Headliner = styled("h3")`
   text-align: center;
@@ -15,7 +14,8 @@ interface DroppableSectionProps {
 }
 
 export const DroppableSection = styled("div")<DroppableSectionProps>`
-  background: ${({ isDraggingOver }) => isDraggingOver ? "lightblue" : "lightgrey"};
+  background: ${({ isDraggingOver }) =>
+    isDraggingOver ? "lightblue" : "lightgrey"};
   padding: 5px;
   width: 250px;
   margin: auto;
@@ -33,8 +33,10 @@ export const DraggableItem = styled("div")<DraggableItemProps>`
   margin: 8px 5px 8px 5px;
   border: 1px solid black;
   border-radius: 5%/50%;
-  background: ${({ isDragging }) => isDragging ? "#6c957d" : "blanchedalmond"};
-  box-shadow: ${({ isDragging }) => isDragging ? "0px 0px 10px green" : "none"};
+  background: ${({ isDragging }) =>
+    isDragging ? "#6c957d" : "blanchedalmond"};
+  box-shadow: ${({ isDragging }) =>
+    isDragging ? "0px 0px 10px green" : "none"};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +64,7 @@ export const DeleteSkill = styled("button")`
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(${ deleteIcon });
+  background-image: url(${deleteIcon});
   cursor: pointer;
   &:hover {
     outline: none;

@@ -1,7 +1,7 @@
-import React, { useCallback, ChangeEvent, FC, MouseEvent } from "react";
-import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
+import React, { useCallback, ChangeEvent, FC, MouseEvent } from 'react';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { DND_Item } from '../../../../actions/DND_ListActions';
-import { 
+import {
   Headliner,
   Subheadliner,
   DroppableSection,
@@ -28,51 +28,57 @@ interface Props {
   setTechnicalSkills: (technicalSkillsList: DND_Item[]) => void;
 }
 
-export const DND_List: FC<Props> = ({ headline, subheadline, technicalSkills, addTechnicalSkill, setTechnicalSkills, technicalSkillsId }) => {
-  const [newSkill, setNewSkill] = React.useState("");
+export const DND_List: FC<Props> = ({
+  headline,
+  subheadline,
+  technicalSkills,
+  addTechnicalSkill,
+  setTechnicalSkills,
+  technicalSkillsId,
+}) => {
+  const [newSkill, setNewSkill] = React.useState('');
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
-    else setTechnicalSkills(
-      reorder(
-        [...technicalSkills],
-        source.index,
-        destination.index
-      )
-    );
-  }
+    else setTechnicalSkills(reorder([...technicalSkills], source.index, destination.index));
+  };
 
-  const handleSubmit = useCallback((event: ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    addTechnicalSkill({
-      id: `${technicalSkillsId + 1}`,
-      content: newSkill,
-    });
-  }, [technicalSkills, technicalSkillsId, newSkill]);
+  const handleSubmit = useCallback(
+    (event: ChangeEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      addTechnicalSkill({
+        id: `${technicalSkillsId + 1}`,
+        content: newSkill,
+      });
+    },
+    [technicalSkills, technicalSkillsId, newSkill],
+  );
 
-  const removeItem = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-    const ItemIndex = parseInt(event.currentTarget.name);
-    const newTechnicalSkills = [...technicalSkills];
-    newTechnicalSkills.splice(ItemIndex, 1)
-    setTechnicalSkills(newTechnicalSkills);
-  }, [technicalSkills, setTechnicalSkills])
+  const removeItem = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      const ItemIndex = parseInt(event.currentTarget.name);
+      const newTechnicalSkills = [...technicalSkills];
+      newTechnicalSkills.splice(ItemIndex, 1);
+      setTechnicalSkills(newTechnicalSkills);
+    },
+    [technicalSkills, setTechnicalSkills],
+  );
 
-  const handleNewSkillChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setNewSkill(event.target.value);
-  }, [newSkill]);
+  const handleNewSkillChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setNewSkill(event.target.value);
+    },
+    [newSkill],
+  );
 
   return (
     <>
       <Headliner>{headline}</Headliner>
       <Subheadliner>{subheadline}</Subheadliner>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="droppable">
+        <Droppable droppableId='droppable'>
           {({ innerRef, droppableProps, placeholder }, { isDraggingOver }) => (
-            <DroppableSection
-              isDraggingOver={isDraggingOver}
-              {...droppableProps}
-              ref={innerRef}
-            >
+            <DroppableSection isDraggingOver={isDraggingOver} {...droppableProps} ref={innerRef}>
               {technicalSkills.map(({ id, content }, index) => (
                 <Draggable key={id} draggableId={id} index={index}>
                   {({ innerRef, draggableProps, dragHandleProps }, { isDragging }) => (
@@ -80,14 +86,9 @@ export const DND_List: FC<Props> = ({ headline, subheadline, technicalSkills, ad
                       isDragging={isDragging}
                       ref={innerRef}
                       {...draggableProps}
-                      {...dragHandleProps}
-                    >
+                      {...dragHandleProps}>
                       <DraggableContent>{content}</DraggableContent>
-                      <DeleteSkill 
-                        name={`${index}`} 
-                        type="button" 
-                        onClick={removeItem}
-                      />
+                      <DeleteSkill name={`${index}`} type='button' onClick={removeItem} />
                     </DraggableItem>
                   )}
                 </Draggable>
@@ -98,19 +99,15 @@ export const DND_List: FC<Props> = ({ headline, subheadline, technicalSkills, ad
         </Droppable>
       </DragDropContext>
       <AddItemForm onSubmit={handleSubmit}>
-        <AddItemInputField 
-          value={newSkill} 
+        <AddItemInputField
+          value={newSkill}
           onChange={handleNewSkillChange}
-          required 
+          required
           maxLength={20}
-          placeholder="Add A Skill"
+          placeholder='Add A Skill'
         />
-        <AddItemSubmit 
-          disabled={technicalSkills.length > 9}
-          type="submit" 
-          value="Add Skill"
-        />
+        <AddItemSubmit disabled={technicalSkills.length > 9} type='submit' value='Add Skill' />
       </AddItemForm>
     </>
   );
-}
+};

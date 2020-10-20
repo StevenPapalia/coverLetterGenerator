@@ -2,7 +2,7 @@ import { ProfilePersonalDetailsEvents } from "../events/ProfilePersonalDetailsEv
 import { IAction } from "../actions/ProfilePersonalDetailsActions";
 
 export interface IState {
-  personalDetails: IAction["payload"]
+  personalDetails: IAction["payload"];
 }
 
 const initState: IState = {
@@ -14,14 +14,16 @@ const initState: IState = {
     linkedIn: "",
     github: "",
     website: "",
-  }
-}
+  },
+};
 
 export const reducer = (state: IState = initState, action: IAction): IState => {
-  switch(action.type) {
+  switch (action.type) {
     case ProfilePersonalDetailsEvents.SET_PERSONAL_DETAILS:
-      return { personalDetails: action.payload };
-    default: 
+      return {
+        personalDetails: action.payload,
+      };
+    default:
       return state;
   }
-}
+};
